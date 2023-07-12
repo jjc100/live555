@@ -20,6 +20,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 
 #include "GroupsockHelper.hh"
 
+#define NO_GETIFADDRS
+
 #if (defined(__WIN32__) || defined(_WIN32)) && !defined(__MINGW32__)
 #include <time.h>
 extern "C" int initializeWinsockIfNecessary();

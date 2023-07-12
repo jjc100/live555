@@ -1,5 +1,5 @@
 # Comment out the following line to produce Makefiles that generate debuggable code:
-NODEBUG=1
+#NODEBUG=1
 
 # If for some reason you wish to use the deprecated "gethostbyname()" function instead of
 # "getaddrinfo()", uncomment the following line:
@@ -16,23 +16,25 @@ TARGETOS = WINNT
 #TARGETOS = WIN95
 #APPVER = 4.0
 
-!include    <ntwin32.mak>
+#!include    <ntwin32.mak>
 
 UI_OPTS =		$(guilflags) $(guilibsdll)
 # Use the following to get a console (e.g., for debugging):
 CONSOLE_UI_OPTS =		$(conlflags) $(conlibsdll)
 CPU=i386
 
-TOOLS32	=		c:\Program Files\DevStudio\Vc
+TOOLS32	=		C:\Program Files\Microsoft Visual Studio\2022\Professional\VC\Tools\MSVC\14.35.32215
 COMPILE_OPTS =		$(INCLUDES) $(cdebug) $(cflags) $(cvarsdll) -I. -I"$(TOOLS32)\include" -DNO_OPENSSL=1 $(USE_DEPRECATED_GETHOSTBYNAME)
 C =			c
-C_COMPILER =		"$(TOOLS32)\bin\cl"
+C_COMPILER =		"$(TOOLS32)\bin\Hostx64\x64\cl"
+LINKDER = "$(TOOLS32)\bin\Hostx64\x64\link"
 C_FLAGS =		$(COMPILE_OPTS)
 CPP =			cpp
 CPLUSPLUS_COMPILER =	$(C_COMPILER)
 CPLUSPLUS_FLAGS =	$(COMPILE_OPTS)
 OBJ =			obj
-LINK =			$(link) -out:
+#LINK =			$(link) -out:
+LINK =			$(LINKDER) -out:
 LIBRARY_LINK =		lib -out:
 LINK_OPTS_0 =		$(linkdebug) msvcirt.lib
 LIBRARY_LINK_OPTS =	
