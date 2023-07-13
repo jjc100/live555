@@ -18,6 +18,8 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 // State encapsulating a TLS connection
 // C++ header
 
+#define NO_OPENSSL
+
 #ifndef _TLS_STATE_HH
 #define _TLS_STATE_HH
 

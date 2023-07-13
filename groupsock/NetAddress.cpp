@@ -28,6 +28,10 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #define INADDR_NONE 0xFFFFFFFF
 #endif
 
+#if (defined(__WIN32__) || defined(_WIN32))
+#include <winsock2.h>
+#pragma comment(lib, "ws2_32.lib")
+#endif
 ////////// NetAddress //////////
 
 NetAddress::NetAddress(u_int8_t const* data, unsigned length) {

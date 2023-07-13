@@ -27,7 +27,7 @@ IOHandlers.$(CPP):	include/IOHandlers.hh
 libgroupsock.$(LIB_SUFFIX): $(GROUPSOCK_LIB_OBJS) \
     $(PLATFORM_SPECIFIC_LIB_OBJS)
 	$(LIBRARY_LINK)$@ $(LIBRARY_LINK_OPTS) \
-		$(GROUPSOCK_LIB_OBJS)
+		$(GROUPSOCK_LIB_OBJS) Ws2_32.lib
 
 clean:
 	-rm -rf *.$(OBJ) $(ALL) core *.core *~ include/*~
@@ -40,5 +40,9 @@ install1: libgroupsock.$(LIB_SUFFIX)
 install_shared_libraries: libgroupsock.$(LIB_SUFFIX)
 	  ln -fs libgroupsock.$(LIB_SUFFIX) $(DESTDIR)$(LIBDIR)/libgroupsock.$(SHORT_LIB_SUFFIX)
 	  ln -fs libgroupsock.$(LIB_SUFFIX) $(DESTDIR)$(LIBDIR)/libgroupsock.so
-
+	
 ##### Any additional, platform-specific rules come here:
+
+install-l: 
+	@echo [Install] $(NAME).$(LIB_SUFFIX)
+	install -m 775 $(NAME).$(LIB_SUFFIX) ../lib
